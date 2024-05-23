@@ -4,6 +4,9 @@ from openai import AzureOpenAI
 from pydub import AudioSegment
 import json
 from InquirerPy import prompt
+from promptflow.tracing import trace, start_trace
+
+start_trace() # this will display a link to the tracing ui
 
 
 # load environment variables
@@ -104,6 +107,7 @@ def extract_sections(text):
     
     return result.choices[0].message.content
 
+@trace
 def create_summary(transcriptions):
     logger.info("Creating summary from sections")
     

@@ -1,4 +1,4 @@
 .env
 videos
-*.txt
+*_id.txt
 .DS_Store
