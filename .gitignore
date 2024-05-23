@@ -1,0 +1,4 @@
+.env
+videos
+*.txt
+.DS_Store
