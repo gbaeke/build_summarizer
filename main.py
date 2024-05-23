@@ -23,12 +23,6 @@ azure_openai_endpoint = os.getenv('AZURE_OPENAI_ENDPOINT')
 azure_openai_key_4o = os.getenv('AZURE_OPENAI_API_KEY_4o')
 azure_openai_endpoint_4o = os.getenv('AZURE_OPENAI_ENDPOINT_4o')
 
-# print all environment variables
-logger.info(f"AZURE_OPENAI_KEY: {azure_openai_key}")
-logger.info(f"AZURE_OPENAI_ENDPOINT: {azure_openai_endpoint}")
-logger.info(f"AZURE_OPENAI_KEY_4o: {azure_openai_key_4o}")
-logger.info(f"AZURE_OPENAI_ENDPOINT_4o: {azure_openai_endpoint_4o}")
-
 whisper_client = AzureOpenAI(
     api_key=azure_openai_key,
     api_version="2024-02-01",
