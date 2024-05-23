@@ -6,7 +6,7 @@ import json
 from InquirerPy import prompt
 from promptflow.tracing import trace, start_trace
 
-start_trace() # this will display a link to the tracing ui
+
 
 
 # load environment variables
@@ -17,6 +17,8 @@ load_dotenv()
 import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+start_trace() # this will display a link to the tracing ui
 
 azure_openai_key = os.getenv('AZURE_OPENAI_API_KEY')
 azure_openai_endpoint = os.getenv('AZURE_OPENAI_ENDPOINT')
