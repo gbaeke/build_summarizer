@@ -23,7 +23,7 @@ AZURE_OPENAI_ENDPOINT_4o=your_endpoint_4o_here
 
 ## Requirements
 
-Create a Python virtual environment and install the requirements. Some requirements might require addition dependencies to be installed on your system.
+Create a Python virtual environment and install the requirements. Some requirements might require additional dependencies to be installed on your system.
 
 ```bash
 python3 -m venv venv
