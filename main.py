@@ -6,9 +6,6 @@ import json
 from InquirerPy import prompt
 from promptflow.tracing import trace, start_trace
 
-
-
-
 # load environment variables
 from dotenv import load_dotenv
 load_dotenv()
@@ -67,41 +64,6 @@ def split_audio(file_path, chunk_size_mb=25):
         chunk = audio[i:i + chunk_size_ms]
         chunk.export(os.path.join(output_dir, f"chunk_{i // chunk_size_ms + 1}{file_ext}"), format=file_ext[1:])
         logger.info(f"Chunk {i // chunk_size_ms + 1} written to disk")
-
-def extract_sections(text):
-    logger.info("Extracting sections from text")
-    result = gpt_client.chat.completions.create(
-        model=gpt_deployment,
-        response_format={ "type": "json_object" },
-        messages=[
-            {
-                "role": "system",
-                "content":  """
-                            You are an expert in creating sections from a video transcript. Identify the main sections with a limit of 5.
-                            Return the sections as JSON with the following format:
-                            {
-                                "sections": [
-                                    {
-                                        "title": "Few words describing the content of the section",
-                                        "summary": "One sentence summary of the content of section 1"
-                                    },
-                                    {
-                                        "title": "Few words describing the content of the section",
-                                        "summary": "One sentence summary of the content of section 2"
-                                    }
-                                ]
-                            }
-                            """
-            },
-            {
-                "role": "user",
-                "content": text
-            }
-        ],
-        max_tokens=4000
-    )
-    
-    return result.choices[0].message.content
 
 @trace
 def create_summary(transcriptions):
